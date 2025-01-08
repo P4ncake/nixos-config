@@ -13,6 +13,7 @@ in {
     kitty
     firefox
     chromium
+    vlc
 
     pavucontrol
 
