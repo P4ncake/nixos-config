@@ -91,7 +91,6 @@
     wget
     tree
     git
-    vim
 
     xorg.xbacklight
 

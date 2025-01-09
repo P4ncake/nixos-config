@@ -3,6 +3,7 @@ let
   aliases = {
     ssh = "kitty ssh";
     venv = "() { source ~/venvs/$1/bin/activate; }";
+    vim = "nvim";
   };
   sessionVariables = {
     EDITOR = "vim";
