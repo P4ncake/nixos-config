@@ -1,7 +1,5 @@
-{pkgs, lib, ...}:
+{ pkgs, lib, ... }:
 
 {
-	services.xserver.windowManager.i3 = {
-		enable = true;
-};
+  services.xserver.windowManager.i3 = { enable = true; };
 }

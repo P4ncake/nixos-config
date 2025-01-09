@@ -11,24 +11,24 @@
 
   };
 
-  outputs = { self, nixpkgs, home-manager, ...}: 
-  let
-    lib = nixpkgs.lib;
-    system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system}; 
-  in {
-    nixosConfigurations = {
-      nixos = lib.nixosSystem {
-        inherit system;
-        modules = [ ./configuration.nix ./i3.nix ];
+  outputs = { self, nixpkgs, home-manager, ... }:
+    let
+      lib = nixpkgs.lib;
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
+    in {
+      nixosConfigurations = {
+        nixos = lib.nixosSystem {
+          inherit system;
+          modules = [ ./configuration.nix ./i3.nix ];
+        };
+      };
+      homeConfigurations = {
+        p4ncake = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [ ./home-manager/home.nix ];
+        };
       };
     };
-    homeConfigurations = {
-      p4ncake = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [ ./home-manager/home.nix ];
-      };
-    };
-  };
 
 }

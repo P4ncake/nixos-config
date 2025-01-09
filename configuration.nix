@@ -5,13 +5,11 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./i3.nix
-    ];
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./i3.nix
+  ];
 
-  
   boot = {
     loader = {
       efi.canTouchEfiVariables = true;
@@ -30,7 +28,7 @@
       };
     };
 
-    kernelParams = ["processor.max_cstate=4" "amd_iomu=soft" "idle=nomwait"];
+    kernelParams = [ "processor.max_cstate=4" "amd_iomu=soft" "idle=nomwait" ];
     kernelPackages = pkgs.linuxPackages_latest;
 
   };
@@ -39,8 +37,9 @@
     pulseaudio.enable = true;
 
     bluetooth.enable = true; # enables support for Bluetooth
-    bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
-    
+    bluetooth.powerOnBoot =
+      true; # powers up the default Bluetooth controller on boot
+
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -52,8 +51,8 @@
 
   time.timeZone = "Europe/Paris";
 
-  services = { 
-    xserver = { 
+  services = {
+    xserver = {
       enable = true;
       exportConfiguration = true;
       # Enable touchpad support (enabled default in most desktopManager).
@@ -69,11 +68,7 @@
     blueman.enable = true;
 
     ## udev android
-    udev = {
-      packages = [
-        pkgs.android-udev-rules
-      ];
-    };
+    udev = { packages = [ pkgs.android-udev-rules ]; };
   };
 
   sound.enable = true;
@@ -83,9 +78,7 @@
     isNormalUser = true;
     shell = pkgs.zsh;
     extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [
-      discord
-    ];
+    packages = with pkgs; [ discord ];
   };
 
   # List packages installed in system profile. To search, run:
@@ -120,8 +113,6 @@
   # (/run/current-system/configuration.nix). This is useful in case you
   # accidentally delete configuration.nix.
   system.copySystemConfiguration = false;
-
-
 
   virtualisation.docker.enable = true;
   # This option defines the first version of NixOS you have installed on this particular machine,

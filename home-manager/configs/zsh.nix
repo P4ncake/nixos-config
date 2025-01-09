@@ -1,18 +1,27 @@
 { pkgs, libs, ... }:
-
-{
+let
+  aliases = {
+    ssh = "kitty ssh";
+    venv = "() { source ~/venvs/$1/bin/activate; }";
+  };
+  sessionVariables = {
+    EDITOR = "vim";
+    PATH = "$PATH:~/src";
+  };
+in {
   programs = {
     zsh = {
       enable = true;
+
+      shellAliases = aliases;
+      sessionVariables = sessionVariables;
+
       oh-my-zsh = {
         enable = true;
         theme = "ys";
       };
       initExtraFirst = ''
         [ ! -d "$HOME/.zsh/fsh/" ] && mkdir $HOME/.zsh/fsh/
-        export PATH=$PATH:~/src
-        export EDITOR='vim'
-        alias ssh='kitten ssh'
       '';
       plugins = [
         {
@@ -31,6 +40,15 @@
             repo = "fast-syntax-highlighting";
             rev = "v1.55";
             sha256 = "0h7f27gz586xxw7cc0wyiv3bx0x3qih2wwh05ad85bh2h834ar8d";
+          };
+        }
+        {
+          name = "zsh-bat";
+          src = pkgs.fetchFromGitHub {
+            owner = "fdellwing";
+            repo = "zsh-bat";
+            rev = "467337613c1c220c0d01d69b19d2892935f43e9f";
+            sha256 = "0sj8dwqlnd7dz7djs6kv92vsxqai2sc2pq865r7i5lxgjxk9hfsd";
           };
         }
       ];
