@@ -24,6 +24,9 @@ in {
       initExtraFirst = ''
         [ ! -d "$HOME/.zsh/fsh/" ] && mkdir $HOME/.zsh/fsh/
       '';
+			initExtra = ''
+				bindkey '^ ' autosuggest-accept
+			'';
       plugins = [
         {
           name = "zsh-autosuggestions";
