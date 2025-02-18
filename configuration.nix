@@ -34,7 +34,7 @@
   };
 
   hardware = {
-    pulseaudio.enable = true;
+    pulseaudio.enable = false;
 
     bluetooth.enable = true; # enables support for Bluetooth
     bluetooth.powerOnBoot =
@@ -71,7 +71,7 @@
     udev = { packages = [ pkgs.android-udev-rules ]; };
   };
 
-  sound.enable = true;
+  #sound.enable = true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
   programs.zsh.enable = true;
   users.users.p4ncake = {
