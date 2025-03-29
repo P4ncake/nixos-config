@@ -9,7 +9,8 @@ let
     EDITOR = "vim";
     PATH = "$PATH:~/src";
   };
-in {
+in
+{
   programs = {
     zsh = {
       enable = true;
@@ -24,9 +25,9 @@ in {
       initExtraFirst = ''
         [ ! -d "$HOME/.zsh/fsh/" ] && mkdir $HOME/.zsh/fsh/
       '';
-			initExtra = ''
-				bindkey '^ ' autosuggest-accept
-			'';
+      initExtra = ''
+        				bindkey '^ ' autosuggest-accept
+        			'';
       plugins = [
         {
           name = "zsh-autosuggestions";
