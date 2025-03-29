@@ -19,5 +19,8 @@ in {
 
     pavucontrol
 
+    steam
+    vulkan-tools
+    lutris
   ];
 }
