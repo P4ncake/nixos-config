@@ -6,6 +6,7 @@ let
     (python-packages: with python-packages; [ pip black flake8 virtualenv ]);
 in
 {
+  imports = [ ./hyprland.nix ];
   home.packages = with pkgs; [
     default-python
 

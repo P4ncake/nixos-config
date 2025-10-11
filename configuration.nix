@@ -1,4 +1,5 @@
 # Edit this configuration file to define what should be installed on
+
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
@@ -54,23 +55,19 @@
   time.timeZone = "Europe/Paris";
 
   services = {
-    xserver = {
-      enable = true;
-      exportConfiguration = true;
-      # Enable touchpad support (enabled default in most desktopManager).
-      libinput = {
-        enable = true;
-        touchpad.tapping = false;
-      };
-
-      layout = "us";
-      xkbVariant = "altgr-intl";
-    };
-
     blueman.enable = true;
-
     ## udev android
     udev = { packages = [ pkgs.android-udev-rules ]; };
+
+    greetd = {
+      enable = true;
+      settings = {
+        default_session = {
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --cmd Hyprland";
+          user = "greeter";
+        };
+      };
+    };
   };
 
   #sound.enable = true;
