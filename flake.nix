@@ -26,7 +26,7 @@
       nixosConfigurations = {
         nixos = lib.nixosSystem {
           inherit system;
-          modules = [ ./configuration.nix ./i3.nix ];
+          modules = [ ./configuration.nix ./i3.nix ./hyprland.nix ];
         };
       };
       homeConfigurations = {
