@@ -26,7 +26,11 @@
       nixosConfigurations = {
         nixos = lib.nixosSystem {
           inherit system;
-          modules = [ ./configuration.nix ./i3.nix ./hyprland.nix ];
+          modules = [
+            ./configuration.nix
+            ./windows-manager/i3.nix
+            ./windows-manager/hyprland.nix
+          ];
         };
       };
       homeConfigurations = {

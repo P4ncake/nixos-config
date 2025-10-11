@@ -9,8 +9,8 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ./i3.nix
-    ./hyprland.nix
+    ./windows-manager/i3.nix
+    ./windows-manager/hyprland.nix
   ];
 
   boot = {

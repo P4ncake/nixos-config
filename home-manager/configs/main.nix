@@ -1,8 +1,14 @@
 { config, pkgs, lib, ... }:
 
 {
-  imports =
-    [ ./zsh.nix ./i3.nix ./compton.nix ./polybar.nix ./rofi.nix ./vim.nix ];
+  imports = [ 
+    ./zsh.nix 
+    ./vim.nix 
+    ./i3/i3.nix 
+    ./i3/compton.nix 
+    ./i3/polybar.nix 
+    ./i3/rofi.nix 
+  ];
   programs = {
     home-manager.enable = true;
     command-not-found.enable = true;

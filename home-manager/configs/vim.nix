@@ -12,11 +12,10 @@
     ];
 
     extraConfig = ''
-      			set tabstop=2
-      			set shiftwidth=2
-      			set number
-      			map <C-n> :NERDTreeToggle<CR>
-      			map <C-m> :Telescope<CR>
-      		'';
+      set shiftwidth=2
+      set number
+      map <C-n> :NERDTreeToggle<CR>
+      map <C-m> :Telescope<CR>
+    '';
   };
 }
