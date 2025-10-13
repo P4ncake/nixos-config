@@ -1,13 +1,15 @@
 { config, pkgs, lib, ... }:
 
 {
-  imports = [ 
-    ./zsh.nix 
-    ./vim.nix 
-    ./i3/i3.nix 
-    ./i3/compton.nix 
-    ./i3/polybar.nix 
-    ./i3/rofi.nix 
+  imports = [
+    ./zsh.nix
+    ./vim.nix
+    ./i3/i3.nix
+    ./i3/compton.nix
+    ./i3/polybar.nix
+    ./i3/rofi.nix
+    ./hyprland/hyprland.nix
+    ./hyprland/waybar.nix
   ];
   programs = {
     home-manager.enable = true;
