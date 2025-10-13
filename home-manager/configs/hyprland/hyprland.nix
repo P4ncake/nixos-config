@@ -38,6 +38,8 @@
     };
 
     input = {
+      kb_layout = "us";
+      kb_variant = "altgr-intl";
 
       touchpad = {
         disable_while_typing = true;
