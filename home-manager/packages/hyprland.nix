@@ -9,5 +9,8 @@
     wofi
     waybar
     hyprlock
+    font-awesome
   ];
+
+  fonts.fontconfig.enable = true;
 }

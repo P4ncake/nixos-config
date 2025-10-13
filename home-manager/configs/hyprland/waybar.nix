@@ -40,21 +40,21 @@
         all-outputs = true;
         on-click = "activate";
       };
-      battery = { format = "󰁹 {}%"; };
+      battery = { format = " {}%"; };
       cpu = {
         interval = 10;
-        format = "󰻠 {}%";
+        format = " {}%";
         max-length = 10;
         on-click = "";
       };
       memory = {
         interval = 30;
-        format = "  {}%";
+        format = " {}%";
         format-alt = " {used:0.1f}G";
         max-length = 10;
       };
       backlight = {
-        format = "󰖨 {}";
+        format = " {}";
         device = "acpi_video0";
       };
       "custom/weather" = {
@@ -69,7 +69,7 @@
         spacing = 10;
       };
       network = {
-        format = "󰖩 {essid}";
+        format = " {essid}";
         format-disconnected = "󰖪 disconnected";
       };
       clock = {
