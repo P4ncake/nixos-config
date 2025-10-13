@@ -8,7 +8,6 @@
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
   };
 
   outputs = { self, nixpkgs, home-manager, ... }:
@@ -29,14 +28,16 @@
           modules = [
             ./configuration.nix
             ./windows-manager/i3.nix
-            ./windows-manager/hyprland.nix
           ];
         };
       };
+
       homeConfigurations = {
         p4ncake = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          modules = [ ./home-manager/home.nix ];
+          modules = [
+            ./home-manager/home.nix
+          ];
         };
       };
     };
