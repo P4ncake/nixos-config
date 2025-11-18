@@ -6,11 +6,31 @@
 {
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-  boot.initrd.availableKernelModules =
-    [ "xhci_pci" "thunderbolt" "vmd" "nvme" "usb_storage" "sd_mod" ];
-  boot.initrd.kernelModules = [ "dm-snapshot" ];
-  boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
+  boot = {
+    initrd = {
+      availableKernelModules =
+        [ "xhci_pci" "thunderbolt" "vmd" "nvme" "usb_storage" "sd_mod" ];
+      kernelModules = [ "dm-snapshot" ];
+      luks.devices = {
+        encrypted = {
+          device = "/dev/disk/by-uuid/f23d6240-95e2-40e8-841d-553137912d48";
+          preLVM = true;
+        };
+      };
+    };
+    kernelModules = [ "kvm-intel" ];
+    kernelParams = [
+      "resume_offset=13768704"
+      "processor.max_cstate=4"
+      "amd_iomu=soft"
+      "idle=nomwait"
+    ];
+    kernelPackages = pkgs.linuxPackages_latest;
+
+    extraModulePackages = [ ];
+    resumeDevice = "/dev/mapper/vg-root";
+  };
+  powerManagement.enable = true;
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/b8ec04cc-a11e-4b78-b570-22fc9e4ac6f0";
@@ -22,8 +42,13 @@
     fsType = "vfat";
   };
 
-  swapDevices =
-    [{ device = "/dev/disk/by-uuid/f69c7a30-b598-46f2-85c3-b8a2c19dc3a8"; }];
+  swapDevices = [
+    { device = "/dev/disk/by-uuid/f69c7a30-b598-46f2-85c3-b8a2c19dc3a8"; }
+    {
+      device = "/var/lib/swapfile";
+      size = 16 * 1024;
+    }
+  ];
 
   hardware.cpu.intel.updateMicrocode =
     lib.mkDefault config.hardware.enableRedistributableFirmware;

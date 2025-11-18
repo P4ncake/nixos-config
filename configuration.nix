@@ -23,17 +23,6 @@
         device = "nodev";
       };
     };
-
-    initrd.luks.devices = {
-      encrypted = {
-        device = "/dev/disk/by-uuid/f23d6240-95e2-40e8-841d-553137912d48";
-        preLVM = true;
-      };
-    };
-
-    kernelParams = [ "processor.max_cstate=4" "amd_iomu=soft" "idle=nomwait" ];
-    kernelPackages = pkgs.linuxPackages_latest;
-
   };
 
   hardware = {
@@ -68,6 +57,13 @@
         };
       };
     };
+
+    power-profiles-daemon.enable = true;
+    logind = {
+      lidSwitch = "hibernate";
+      lidSwitchExternalPower = "lock";
+      lidSwitchDocked = "ignore";
+    };
   };
 
   #sound.enable = true;
@@ -91,6 +87,7 @@
     tree
     git
     kitty
+    vim
 
     xorg.xbacklight
 
