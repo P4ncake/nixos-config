@@ -37,6 +37,11 @@
 
     };
 
+    misc = {
+      force_default_wallpaper = 1;
+      disable_hyprland_logo = true;
+    };
+
     input = {
       kb_layout = "us";
       kb_variant = "altgr-intl";
