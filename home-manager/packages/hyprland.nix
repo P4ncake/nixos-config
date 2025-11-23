@@ -5,12 +5,7 @@
   programs.kitty.enable = true;
   wayland.windowManager.hyprland.enable = true;
 
-  home.packages = with pkgs; [
-    wofi
-    waybar
-    hyprlock
-    font-awesome
-  ];
+  home.packages = with pkgs; [ wofi waybar hyprlock font-awesome ];
 
   fonts.fontconfig.enable = true;
 }

@@ -28,8 +28,7 @@ let
   # Red
   urgency = "#e74c3c";
 
-in
-{
+in {
   services.polybar = {
     enable = true;
 

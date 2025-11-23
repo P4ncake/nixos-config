@@ -18,26 +18,20 @@
         inherit system;
         config.allowUnfree = true;
       };
-    in
-    {
+    in {
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
 
       nixosConfigurations = {
         nixos = lib.nixosSystem {
           inherit system;
-          modules = [
-            ./configuration.nix
-            ./windows-manager/i3.nix
-          ];
+          modules = [ ./configuration.nix ./windows-manager/i3.nix ];
         };
       };
 
       homeConfigurations = {
         p4ncake = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          modules = [
-            ./home-manager/home.nix
-          ];
+          modules = [ ./home-manager/home.nix ];
         };
       };
     };
